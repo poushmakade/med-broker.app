@@ -1,0 +1,536 @@
+.paymentPage {
+--pay-ink: var(--color-text);
+--pay-subtle: var(--color-text-secondary);
+--pay-line: var(--color-lavender);
+--pay-bg-soft: var(--color-bg-secondary);
+--pay-accent: var(--color-primary-hover);
+--pay-accent-dark: var(--color-primary-hover);
+--pay-accent-mint: var(--color-lavender);
+--pay-shadow: 0 24px 60px rgba(124, 58, 237, 0.08);
+background:
+radial-gradient(1200px 480px at 0% -10%, rgba(124, 58, 237, 0.2), transparent 60%),
+radial-gradient(900px 420px at 95% -8%, rgba(124, 58, 237, 0.15), transparent 62%),
+linear-gradient(180deg, var(--color-bg-secondary) 0%, var(--color-bg-secondary) 100%);
+}
+
+.paymentContainer {
+padding-top: 2rem;
+padding-bottom: 3rem;
+}
+
+.breadcrumbRow {
+display: flex;
+align-items: center;
+gap: 0.55rem;
+font-size: 0.86rem;
+color: var(--pay-subtle);
+margin-bottom: 1.25rem;
+}
+
+.breadcrumbLink {
+display: inline-flex;
+align-items: center;
+gap: 0.4rem;
+border: none;
+background: transparent;
+color: var(--pay-subtle);
+font-weight: 600;
+cursor: pointer;
+padding: 0;
+}
+
+.breadcrumbLink:hover {
+color: var(--pay-ink);
+}
+
+.breadcrumbActive {
+color: var(--pay-ink);
+font-weight: 600;
+}
+
+.layoutGrid {
+display: grid;
+grid-template-columns: 1.55fr 1fr;
+gap: 1.25rem;
+align-items: start;
+}
+
+.formPanel,
+.summaryPanel {
+background: rgba(255, 255, 255, 0.9);
+border: 1px solid rgba(255, 255, 255, 0.9);
+border-radius: 22px;
+box-shadow: var(--pay-shadow);
+backdrop-filter: blur(7px);
+}
+
+.formPanel {
+padding: 1.5rem;
+}
+
+.titleWrap {
+margin-bottom: 1.35rem;
+}
+
+.pageTitle {
+margin: 0;
+font-size: clamp(1.5rem, 2.2vw, 2rem);
+line-height: 1.2;
+color: var(--pay-ink);
+font-weight: 700;
+}
+
+.pageSubtitle {
+margin: 0.5rem 0 0;
+font-size: 0.95rem;
+color: var(--pay-subtle);
+}
+
+.formContainer {
+display: flex;
+flex-direction: column;
+gap: 1rem;
+}
+
+.methodList {
+display: grid;
+gap: 0.72rem;
+}
+
+.methodCard {
+display: grid;
+grid-template-columns: auto auto 1fr auto;
+align-items: center;
+gap: 0.8rem;
+padding: 0.95rem;
+border: 1px solid var(--pay-line);
+border-radius: 15px;
+cursor: pointer;
+background: var(--color-bg);
+transition: border-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.methodCard input {
+accent-color: var(--pay-accent);
+}
+
+.methodCard:hover {
+transform: translateY(-1px);
+border-color: var(--color-lavender);
+}
+
+.methodCardActive {
+border-color: var(--color-primary);
+background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-secondary) 100%);
+box-shadow: 0 12px 28px rgba(124, 58, 237, 0.08);
+}
+
+.methodCardDisabled {
+opacity: 0.56;
+cursor: not-allowed;
+}
+
+.methodIcon {
+width: 34px;
+height: 34px;
+display: grid;
+place-items: center;
+border-radius: 10px;
+background: var(--pay-bg-soft);
+color: var(--pay-accent-dark);
+}
+
+.methodTextWrap {
+min-width: 0;
+}
+
+.methodTitle {
+margin: 0;
+font-size: 0.95rem;
+font-weight: 700;
+color: var(--pay-ink);
+}
+
+.methodSubtitle {
+margin: 0.15rem 0 0;
+font-size: 0.81rem;
+color: var(--pay-subtle);
+}
+
+.methodBadge {
+color: var(--pay-accent-dark);
+}
+
+.methodDetails {
+border: 1px solid var(--pay-line);
+border-radius: 16px;
+padding: 1rem;
+background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-secondary) 100%);
+}
+
+.qrBlock {
+display: grid;
+gap: 0.75rem;
+}
+
+.qrLabel {
+margin: 0;
+display: inline-flex;
+align-items: center;
+gap: 0.4rem;
+font-size: 0.82rem;
+font-weight: 700;
+letter-spacing: 0.01em;
+color: var(--pay-subtle);
+}
+
+.qrCanvasWrap {
+padding: 1rem;
+background: var(--color-bg);
+border: 1px solid var(--pay-line);
+border-radius: 14px;
+display: flex;
+justify-content: center;
+}
+
+.qrHint {
+margin: 0;
+font-size: 0.82rem;
+color: var(--pay-subtle);
+}
+
+.upiFields {
+margin-top: 0.9rem;
+display: grid;
+gap: 0.75rem;
+}
+
+.intentLink {
+font-size: 0.84rem;
+font-weight: 600;
+color: var(--pay-accent-dark);
+text-decoration: none;
+}
+
+.intentLink:hover {
+text-decoration: underline;
+}
+
+.formGroup {
+display: grid;
+gap: 0.45rem;
+}
+
+.label {
+font-size: 0.8rem;
+font-weight: 700;
+letter-spacing: 0.01em;
+text-transform: uppercase;
+color: var(--pay-subtle);
+}
+
+.input {
+width: 100%;
+height: 44px;
+padding: 0 0.8rem;
+border-radius: 10px;
+border: 1px solid var(--pay-line);
+font-size: 0.95rem;
+color: var(--pay-ink);
+background: var(--color-bg);
+outline: none;
+transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.input:focus {
+border-color: var(--color-primary);
+box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.14);
+}
+
+.twoColumn {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 0.7rem;
+}
+
+.walletCard {
+padding: 1rem;
+border: 1px dashed var(--color-lavender);
+border-radius: 12px;
+background: var(--pay-bg-soft);
+display: grid;
+gap: 0.4rem;
+}
+
+.walletLabel {
+margin: 0;
+font-size: 0.82rem;
+color: var(--pay-subtle);
+}
+
+.walletAmount {
+margin: 0;
+font-size: 1.35rem;
+font-weight: 700;
+color: var(--pay-ink);
+}
+
+.walletButton {
+width: fit-content;
+border: 1px solid var(--color-lavender);
+background: var(--color-bg);
+color: var(--color-primary-hover);
+font-weight: 700;
+padding: 0.45rem 0.8rem;
+border-radius: 9px;
+cursor: pointer;
+}
+
+.payButton {
+height: 48px;
+border: none;
+border-radius: 12px;
+background: linear-gradient(135deg, var(--pay-accent) 0%, var(--pay-accent-dark) 100%);
+color: var(--color-bg);
+font-size: 0.97rem;
+font-weight: 700;
+letter-spacing: 0.01em;
+cursor: pointer;
+transition: transform 0.18s ease, filter 0.18s ease;
+}
+
+.payButton:disabled {
+opacity: 0.65;
+cursor: not-allowed;
+}
+
+.payButton:not(:disabled):hover {
+transform: translateY(-1px);
+filter: brightness(1.03);
+}
+
+.disclaimer {
+margin: 0;
+font-size: 0.8rem;
+color: var(--color-text-secondary);
+}
+
+.summaryPanel {
+padding: 1.2rem;
+position: sticky;
+top: 1rem;
+display: grid;
+gap: 0.95rem;
+}
+
+.summaryTitle {
+margin: 0;
+font-size: 1.2rem;
+font-weight: 700;
+color: var(--pay-ink);
+}
+
+.orderMetaCard {
+display: grid;
+gap: 0.5rem;
+padding: 0.85rem;
+border-radius: 14px;
+background: linear-gradient(135deg, var(--color-bg-secondary) 0%, var(--color-bg-secondary) 100%);
+border: 1px solid var(--color-lavender);
+}
+
+.orderMetaCard p {
+margin: 0;
+display: flex;
+justify-content: space-between;
+gap: 0.65rem;
+font-size: 0.83rem;
+}
+
+.orderMetaCard span {
+color: var(--pay-subtle);
+}
+
+.orderMetaCard strong {
+color: var(--pay-ink);
+font-weight: 700;
+text-align: right;
+}
+
+.section {
+border-top: 1px solid var(--pay-line);
+padding-top: 0.95rem;
+}
+
+.sectionTitle {
+margin: 0 0 0.55rem;
+font-size: 0.85rem;
+font-weight: 700;
+text-transform: uppercase;
+letter-spacing: 0.01em;
+color: var(--pay-subtle);
+}
+
+.addressText {
+margin: 0;
+font-size: 0.88rem;
+line-height: 1.55;
+color: var(--color-text);
+}
+
+.itemRow {
+display: flex;
+justify-content: space-between;
+gap: 0.6rem;
+padding: 0.42rem 0;
+font-size: 0.86rem;
+color: var(--color-text);
+}
+
+.amountRows {
+border-top: 1px solid var(--pay-line);
+padding-top: 0.95rem;
+display: grid;
+gap: 0.55rem;
+}
+
+.pricingRow,
+.pricingRowDiscount,
+.totalRow {
+display: flex;
+justify-content: space-between;
+align-items: center;
+gap: 0.55rem;
+font-size: 0.9rem;
+}
+
+.pricingRow span {
+color: var(--color-text);
+}
+
+.pricingRow strong {
+color: var(--color-text);
+}
+
+.pricingRowDiscount span,
+.pricingRowDiscount strong {
+color: var(--color-primary-hover);
+font-weight: 700;
+}
+
+.taxLabel {
+display: inline-flex;
+align-items: center;
+gap: 0.3rem;
+}
+
+.totalRow {
+margin-top: 0.3rem;
+padding-top: 0.65rem;
+border-top: 1px dashed var(--color-lavender);
+font-size: 1.03rem;
+font-weight: 700;
+color: var(--pay-ink);
+}
+
+.securityCard {
+display: grid;
+grid-template-columns: auto 1fr;
+gap: 0.65rem;
+align-items: start;
+padding: 0.82rem;
+border-radius: 12px;
+background: linear-gradient(180deg, var(--color-bg-secondary) 0%, var(--color-bg-secondary) 100%);
+border: 1px solid var(--color-lavender);
+color: var(--color-primary-hover);
+}
+
+.securityTitle {
+margin: 0;
+font-size: 0.85rem;
+font-weight: 700;
+}
+
+.securityText {
+margin: 0.15rem 0 0;
+font-size: 0.78rem;
+color: var(--color-primary-hover);
+}
+
+.loadingContainer,
+.errorContainer {
+min-height: 70vh;
+display: grid;
+place-items: center;
+padding: 2rem;
+text-align: center;
+color: var(--text-secondary);
+}
+
+.loadingSpinner {
+width: 44px;
+height: 44px;
+border: 3px solid var(--color-lavender);
+border-top-color: var(--pay-accent);
+border-radius: 50%;
+animation: spin 0.9s linear infinite;
+margin: 0 auto 0.75rem;
+}
+
+.retryButton {
+margin-top: 0.75rem;
+height: 40px;
+padding: 0 1rem;
+border: none;
+border-radius: 10px;
+background: var(--pay-accent);
+color: var(--color-bg);
+font-weight: 700;
+cursor: pointer;
+}
+
+@keyframes spin {
+to {
+transform: rotate(360deg);
+}
+}
+
+@media (max-width: 1080px) {
+.layoutGrid {
+grid-template-columns: 1fr;
+}
+
+.summaryPanel {
+position: static;
+}
+}
+
+@media (max-width: 700px) {
+.paymentContainer {
+padding-top: 1.2rem;
+padding-bottom: 1.8rem;
+}
+
+.formPanel,
+.summaryPanel {
+border-radius: 16px;
+padding: 1rem;
+}
+
+.methodCard {
+grid-template-columns: auto auto 1fr;
+}
+
+.methodBadge {
+display: none;
+}
+
+.twoColumn {
+grid-template-columns: 1fr;
+}
+}
+
+/* Shared lavender-white surface treatment. */
+.formPanel,
+.summaryPanel,
+.methodCard { background: var(--color-bg); border-color: var(--color-border); border-radius: 18px; box-shadow: 0 4px 20px rgba(70, 36, 117, .035); }

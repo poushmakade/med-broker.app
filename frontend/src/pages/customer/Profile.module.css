@@ -1,0 +1,275 @@
+.loaderWrap {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 60vh;
+}
+
+.panelTabs {
+	display: flex;
+	gap: 0.5rem;
+	flex-wrap: wrap;
+	background: var(--color-bg);
+	border: 1px solid var(--border-light);
+	border-radius: 1rem;
+	padding: 0.55rem;
+}
+
+.panelTab {
+	padding: 0.45rem 0.78rem;
+	border-radius: 999px;
+	border: 1px solid transparent;
+	background: transparent;
+	color: var(--text-secondary);
+	font-size: 0.82rem;
+	font-weight: 700;
+	cursor: pointer;
+}
+
+.panelTab:hover {
+	color: var(--text-primary);
+	background: var(--surface);
+}
+
+.panelTabActive {
+	background: rgba(124, 58, 237, 0.13);
+	border-color: rgba(124, 58, 237, 0.35);
+	color: var(--color-primary-hover);
+}
+
+.panelArea {
+	display: grid;
+	gap: 0.9rem;
+}
+
+.card {
+	background: var(--color-bg);
+	border: 1px solid var(--border-light);
+	border-radius: 1rem;
+	padding: 1rem;
+	box-shadow: 0 8px 24px rgba(31, 41, 55, 0.05);
+}
+
+.cardHeader {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 0.7rem;
+	margin-bottom: 0.9rem;
+}
+
+.cardHeader h2,
+.cardHeader h3 {
+	margin: 0;
+	font-size: 1.05rem;
+	color: var(--text-primary);
+}
+
+.cardEditButton {
+	padding: 0.4rem 0.75rem;
+	border: 1px solid var(--border);
+	border-radius: 999px;
+	background: var(--color-bg);
+	font-size: 0.82rem;
+	font-weight: 700;
+	cursor: pointer;
+	color: var(--text-secondary);
+}
+
+.cardEditButton:hover {
+	border-color: var(--primary);
+	color: var(--primary);
+}
+
+.profileTopRow {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	margin-bottom: 1rem;
+}
+
+.avatarWrap {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.45rem;
+}
+
+.uploadImageButton {
+	padding: 0.32rem 0.6rem;
+	font-size: 0.76rem;
+	font-weight: 700;
+	border-radius: 999px;
+	border: 1px solid var(--border);
+	background: var(--color-bg);
+	cursor: pointer;
+	position: relative;
+	overflow: hidden;
+}
+
+.uploadImageButton input {
+	position: absolute;
+	inset: 0;
+	opacity: 0;
+	cursor: pointer;
+}
+
+.personName {
+	margin: 0;
+	font-size: 1.1rem;
+	font-weight: 800;
+	color: var(--text-primary);
+}
+
+.personRole,
+.personLocation {
+	margin: 0.2rem 0 0;
+	font-size: 0.86rem;
+	color: var(--text-secondary);
+}
+
+.gridTwo {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 0.8rem;
+}
+
+.fieldLabel {
+	display: flex;
+	flex-direction: column;
+	gap: 0.35rem;
+	font-size: 0.8rem;
+	font-weight: 700;
+	color: var(--text-secondary);
+}
+
+.fieldInput {
+	padding: 0.68rem 0.75rem;
+	border: 1px solid var(--border);
+	border-radius: 0.62rem;
+	font-size: 0.9rem;
+	font-family: inherit;
+	background: var(--color-bg);
+	color: var(--text-primary);
+}
+
+.fieldInput:disabled {
+	background: var(--surface);
+	color: var(--text-secondary);
+}
+
+.metaItem {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0.65rem 0;
+	border-bottom: 1px solid var(--border-light);
+	font-size: 0.9rem;
+}
+
+.metaItem span {
+	color: var(--text-secondary);
+}
+
+.metaItem strong {
+	color: var(--text-primary);
+	font-size: 0.92rem;
+}
+
+.checkboxList {
+	display: grid;
+	gap: 0.55rem;
+	margin-top: 1rem;
+}
+
+.checkboxList label {
+	display: flex;
+	align-items: center;
+	gap: 0.55rem;
+	font-size: 0.9rem;
+	color: var(--text-primary);
+}
+
+.checkboxList input {
+	accent-color: var(--primary);
+}
+
+.actionGrid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 0.65rem;
+}
+
+.cardActionsRow {
+	display: flex;
+	justify-content: flex-end;
+	flex-wrap: wrap;
+	gap: 0.6rem;
+	margin-top: 1rem;
+}
+
+.ghostButton,
+.primaryButton,
+.dangerButton {
+	padding: 0.62rem 0.95rem;
+	border-radius: 0.66rem;
+	font-size: 0.86rem;
+	font-weight: 700;
+	cursor: pointer;
+}
+
+.ghostButton {
+	border: 1px solid var(--border);
+	background: var(--color-bg);
+	color: var(--text-primary);
+}
+
+.ghostButton:hover {
+	border-color: var(--primary);
+	color: var(--primary);
+}
+
+.primaryButton {
+	border: 1px solid transparent;
+	background: var(--primary);
+	color: var(--color-bg);
+}
+
+.primaryButton:disabled {
+	opacity: 0.65;
+	cursor: not-allowed;
+}
+
+.dangerButton {
+	border: 1px solid color-mix(in srgb, var(--color-error) 9%, white);
+	background: color-mix(in srgb, var(--color-error) 9%, white);
+	color: var(--color-error);
+}
+
+.helpText {
+	margin-top: 0.85rem;
+	color: var(--text-secondary);
+	font-size: 0.82rem;
+}
+
+@media (max-width: 980px) {
+	.panelArea {
+		order: 1;
+	}
+}
+
+@media (max-width: 680px) {
+	.gridTwo,
+	.actionGrid {
+		grid-template-columns: 1fr;
+	}
+
+	.profileTopRow {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+}
+
+/* Shared lavender-white surface treatment. */
+.card,
+.panelTabs { background: var(--color-bg); border-color: var(--color-border); border-radius: 18px; box-shadow: 0 4px 20px rgba(70, 36, 117, .035); }

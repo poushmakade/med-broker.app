@@ -1,0 +1,58 @@
+.contact-demo {
+  font-family: 'Inter', system-ui, -apple-system, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light;
+  color: var(--color-text);
+  background-color: var(--color-bg-secondary);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.contact-demo a {
+  font-weight: 500;
+  color: var(--color-primary-hover);
+  text-decoration: inherit;
+}
+.contact-demo a:hover {
+  color: var(--color-text);
+}
+
+.contact-demo {
+  margin: 0;
+  display: block;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text);
+}
+
+.contact-demo h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+.contact-demo button {
+  border-radius: 8px;
+  border: 1px solid var(--color-lavender);
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: border-color 0.25s, background-color 0.25s;
+}
+.contact-demo button:hover {
+  border-color: var(--color-primary-hover);
+  background-color: var(--color-bg-secondary);
+}
+.contact-demo button:focus,
+.contact-demo button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}

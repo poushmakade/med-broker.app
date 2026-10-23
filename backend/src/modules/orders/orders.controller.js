@@ -1,0 +1,237 @@
+const orderService = require('./orders.service');
+const { buildOrderReceiptPdf } = require('./orders.receipt');
+
+module.exports = {
+  /**
+   * POST /api/orders
+   * Create a new order
+   */
+  createOrder: async (req, res, next) => {
+    try {
+      const userId = req.user.id;
+      const order = await orderService.createOrder(userId, req.body);
+      
+      res.status(201).json({
+        success: true,
+        message: 'Order created successfully',
+        data: order
+      });
+    } catch (error) {
+      next(error);
+    }
+  },
+
+  /**
+   * GET /api/orders
+   * Get all orders for the authenticated user
+   */
+  getUserOrders: async (req, res, next) => {
+    try {
+      const userId = req.user.id;
+      const { page, limit, status } = req.query;
+      
+      const options = {
+        page: page ? parseInt(page) : 1,
+        limit: limit ? parseInt(limit) : 10,
+        status
+      };
+
+      const result = await orderService.getUserOrders(userId, options);
+      
+      res.status(200).json({
+        success: true,
+        data: result.orders,
+        pagination: result.pagination
+      });
+    } catch (error) {
+      next(error);
+    }
+  },
+
+  /**
+   * GET /api/orders/:id
+   * Get order details by ID
+   */
+  getOrderById: async (req, res, next) => {
+    try {
+      const orderId = req.params.id;
+      const userId = req.user.id;
+      const userRole = req.user.role;
+      
+      const order = await orderService.getOrderById(orderId, userId, userRole);
+      
+      res.status(200).json({
+        success: true,
+        data: order
+      });
+    } catch (error) {
+      next(error);
+    }
+  },
+
+  /**
+   * PATCH /api/orders/:id/status
+   * Update order status (vendors/admins only)
+   */
+  updateOrderStatus: async (req, res, next) => {
+    try {
+      const orderId = req.params.id;
+      const { status } = req.body;
+      const userId = req.user.id;
+      const userRole = req.user.role;
+
+      if (!status) {
+        return res.status(400).json({
+          success: false,
+          message: 'Status is required'
+        });
+      }
+      
+      const order = await orderService.updateOrderStatus(orderId, status, userId, userRole);
+      
+      res.status(200).json({
+        success: true,
+        message: 'Order status updated successfully',
+        data: order
+      });
+    } catch (error) {
+      next(error);
+    }
+  },
+
+  /**
+   * PATCH /api/orders/:id/cancel
+   * Cancel an order (customers only)
+   */
+  cancelOrder: async (req, res, next) => {
+    try {
+      const orderId = req.params.id;
+      const userId = req.user.id;
+      const userRole = req.user.role;
+      
+      const order = await orderService.cancelOrder(orderId, userId, userRole);
+      
+      res.status(200).json({
+        success: true,
+        message: 'Order cancelled successfully',
+        data: order
+      });
+    } catch (error) {
+      next(error);
+    }
+  },
+
+  /**
+   * POST /api/orders/:id/refund-request
+   * Customer requests a refund for a paid order
+   */
+  requestRefund: async (req, res, next) => {
+    try {
+      const orderId = req.params.id;
+      const userId = req.user.id;
+      const userRole = req.user.role;
+      const { reason } = req.body || {};
+
+      const result = await orderService.requestRefund(orderId, userId, userRole, reason);
+
+      res.status(200).json({ success: true, data: result });
+    } catch (error) {
+      next(error);
+    }
+  },
+
+  /**
+   * GET /api/orders/:id/refund-eligibility
+   * Get refund eligibility info (timer, breakdown, status)
+   */
+  getRefundEligibility: async (req, res, next) => {
+    try {
+      const orderId = req.params.id;
+      const userId = req.user.id;
+      const userRole = req.user.role;
+
+      const result = await orderService.getRefundEligibility(orderId, userId, userRole);
+
+      res.status(200).json({ success: true, data: result });
+    } catch (error) {
+      next(error);
+    }
+  },
+
+  /**
+   * POST /api/orders/prescription/upload
+   * Upload prescription image to Cloudinary
+   */
+  uploadPrescription: async (req, res, next) => {
+    try {
+      const userId = req.user.id;
+      const result = await orderService.uploadPrescription(userId, req.file);
+
+      res.status(201).json({
+        success: true,
+        message: 'Prescription uploaded successfully',
+        data: result
+      });
+    } catch (error) {
+      next(error);
+    }
+  },
+
+  /**
+   * GET /api/orders/:id/receipt
+   * Download order receipt as PDF
+   */
+  downloadReceipt: async (req, res, next) => {
+    try {
+      const orderId = req.params.id;
+      const userId = req.user.id;
+      const userRole = req.user.role;
+
+      // Use getOrderById to include invoice/pdfUrl in the returned order
+      const order = await orderService.getOrderById(orderId, userId, userRole);
+
+      // If invoice already has a stored PDF URL, redirect to it so client can download directly.
+      if (order.invoice && order.invoice.pdfUrl) {
+        return res.redirect(order.invoice.pdfUrl);
+      }
+
+      // Build PDF document in-memory and upload to Cloudinary, then stream to client.
+      const doc = buildOrderReceiptPdf(order);
+
+      // Collect PDF into buffer
+      const chunks = [];
+      doc.on('data', (chunk) => chunks.push(chunk));
+      doc.on('end', async () => {
+        try {
+          const buffer = Buffer.concat(chunks);
+          // Upload to Cloudinary (raw)
+          const { uploadRawFile } = require('../../services/cloudinary.service');
+          const secureUrl = await uploadRawFile(buffer, 'application/pdf', { publicId: `receipt-${order.id}` });
+
+          // Save or upsert invoice record
+          try {
+            const { prisma } = require('../../database/prisma');
+            await prisma.invoice.upsert({
+              where: { orderId: order.id },
+              update: { pdfUrl: secureUrl, issuedAt: new Date(), amountCents: order.totalCents || 0 },
+              create: { orderId: order.id, invoiceNumber: `INV-${Date.now()}`, pdfUrl: secureUrl, amountCents: order.totalCents || 0 }
+            });
+          } catch (e) {
+            console.warn('Failed to save invoice pdfUrl:', e?.message || e);
+          }
+
+          // Stream buffer to client with appropriate headers
+          res.setHeader('Content-Type', 'application/pdf');
+          res.setHeader('Content-Disposition', `attachment; filename=receipt_${order.id}.pdf`);
+          res.send(buffer);
+        } catch (err) {
+          next(err);
+        }
+      });
+
+      doc.end();
+    } catch (error) {
+      next(error);
+    }
+  }
+};

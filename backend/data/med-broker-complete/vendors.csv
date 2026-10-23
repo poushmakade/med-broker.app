@@ -1,0 +1,6 @@
+﻿vendor_code,companyName,vendorType,country,state,city,verificationStatus,isDemo
+V001,Demo Nagpur Pharmacy,PHARMACY,India,Maharashtra,Nagpur,PENDING,True
+V002,Demo Pune MedSupply,DISTRIBUTOR,India,Maharashtra,Pune,PENDING,True
+V003,Demo Mumbai HealthTrade,DISTRIBUTOR,India,Maharashtra,Mumbai,PENDING,True
+V004,Demo Delhi Pharma Outlet,PHARMACY,India,Delhi,New Delhi,PENDING,True
+V005,Demo Hyderabad Medicines,PHARMACY,India,Telangana,Hyderabad,PENDING,True

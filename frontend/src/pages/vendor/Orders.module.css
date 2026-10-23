@@ -1,0 +1,351 @@
+.container {
+	padding: 2rem;
+	background-color: var(--surface);
+	min-height: 100vh;
+}
+
+.header {
+	margin-bottom: 2rem;
+}
+
+.title {
+	font-size: 2rem;
+	font-weight: 700;
+	color: var(--text-primary);
+	margin: 0;
+	margin-bottom: 0.5rem;
+}
+
+.subtitle {
+	font-size: 0.95rem;
+	color: var(--text-secondary);
+	margin: 0;
+}
+
+.filterBar {
+	display: flex;
+	gap: 0.5rem;
+	margin-bottom: 2rem;
+	flex-wrap: wrap;
+}
+
+.filterButton {
+	padding: 0.6rem 1.2rem;
+	border: 1px solid var(--border);
+	background-color: white;
+	border-radius: var(--radius);
+	cursor: pointer;
+	font-weight: 500;
+	transition: all 0.2s;
+	font-size: 0.9rem;
+}
+
+.filterButton:hover {
+	background-color: var(--surface);
+}
+
+.filterButtonActive {
+	padding: 0.6rem 1.2rem;
+	border: none;
+	background-color: var(--primary);
+	color: white;
+	border-radius: var(--radius);
+	cursor: pointer;
+	font-weight: 500;
+	transition: all 0.2s;
+	font-size: 0.9rem;
+}
+
+.section {
+	background-color: white;
+	border-radius: var(--radius-lg);
+	border: 1px solid var(--border);
+	box-shadow: var(--shadow-sm);
+	margin-bottom: 2rem;
+	overflow: hidden;
+}
+
+.table {
+	width: 100%;
+	border-collapse: separate;
+	border-spacing: 0;
+}
+
+.tableHeader {
+	background-color: var(--surface);
+	font-weight: 600;
+	color: var(--text-secondary);
+	padding: 0.9rem 1.2rem;
+	text-align: left;
+	border-bottom: 1px solid var(--border-light);
+	font-size: 0.75rem;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+}
+
+.tableRow {
+	border-bottom: 1px solid var(--border-light);
+	transition: background-color 0.2s ease;
+	cursor: pointer;
+}
+
+.tableRow:hover {
+	background-color: var(--surface);
+}
+
+.tableCell {
+	padding: 1rem 1.2rem;
+	text-align: left;
+	font-size: 0.9rem;
+	color: var(--text-primary);
+	vertical-align: middle;
+}
+
+.statusBadge {
+	display: inline-flex;
+	align-items: center;
+	padding: 0.35rem 0.78rem;
+	border-radius: var(--radius-full);
+	font-size: 0.75rem;
+	font-weight: 700;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	line-height: 1.2;
+	color: white;
+}
+
+.modalOverlay {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(124, 58, 237, 0.48);
+	backdrop-filter: blur(6px);
+	-webkit-backdrop-filter: blur(6px);
+	z-index: 1000;
+	align-items: center;
+	justify-content: center;
+	padding: 1rem;
+}
+
+.modalActive {
+	display: flex;
+}
+
+.modal {
+	background-color: var(--surface-elevated);
+	border: 1px solid var(--border-light);
+	border-radius: var(--radius-lg);
+	padding: 2rem;
+	max-width: 600px;
+	width: 90%;
+	max-height: 85vh;
+	overflow: auto;
+	box-shadow: var(--shadow-xl);
+}
+
+.modalHeader {
+	font-size: 1.5rem;
+	font-weight: 700;
+	color: var(--text-primary);
+	margin-bottom: 1.5rem;
+	padding-bottom: 1rem;
+	border-bottom: 1px solid var(--border);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.modalGrid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 1.5rem;
+	margin-bottom: 1.5rem;
+}
+
+.modalField {
+	grid-column: auto;
+}
+
+.modalFieldFull {
+	grid-column: 1 / -1;
+}
+
+.label {
+	display: block;
+	font-size: 0.85rem;
+	font-weight: 600;
+	color: var(--text-secondary);
+	margin-bottom: 0.4rem;
+	text-transform: uppercase;
+}
+
+.value {
+	font-size: 0.95rem;
+	color: var(--text-primary);
+	font-weight: 500;
+}
+
+.itemsList {
+	background-color: var(--surface);
+	border-radius: var(--radius);
+	padding: 1rem;
+}
+
+.item {
+	display: flex;
+	justify-content: space-between;
+	padding-bottom: 0.8rem;
+	margin-bottom: 0.8rem;
+	border-bottom: 1px solid var(--border);
+}
+
+.itemName {
+	color: var(--text-primary);
+	font-weight: 500;
+}
+
+.itemPrice {
+	color: var(--primary);
+	font-weight: 600;
+}
+
+.actionButtons {
+	display: flex;
+	gap: 0.8rem;
+	margin-top: 1.5rem;
+}
+
+.button {
+	flex: 1;
+	padding: 0.8rem;
+	border: none;
+	border-radius: var(--radius);
+	cursor: pointer;
+	font-weight: 600;
+	transition: all 0.2s;
+}
+
+.button:hover {
+	opacity: 0.9;
+}
+
+.primaryButton {
+	background-color: var(--primary);
+	color: white;
+}
+
+.secondaryButton {
+	background-color: white;
+	border: 1px solid var(--border);
+	color: var(--text-primary);
+}
+
+.secondaryButton:hover {
+	background-color: var(--surface);
+}
+
+.closeButton {
+	background: none;
+	border: none;
+	font-size: 1.5rem;
+	cursor: pointer;
+	color: var(--text-secondary);
+}
+
+.closeButton:hover {
+	color: var(--text-primary);
+}
+
+.viewButton {
+	padding: 0.4rem 0.8rem;
+	background-color: var(--primary);
+	color: white;
+	border: none;
+	border-radius: var(--radius);
+	cursor: pointer;
+	font-size: 0.85rem;
+	font-weight: 500;
+}
+
+.viewButton:hover {
+	opacity: 0.9;
+}
+
+.statusDropdown {
+	width: 100%;
+	padding: 0.8rem;
+	border: 1px solid var(--border);
+	border-radius: var(--radius);
+	font-family: inherit;
+	background-color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+	.container {
+		padding: 1.5rem;
+	}
+
+	.table {
+		display: block;
+		overflow-x: auto;
+	}
+
+	.filterBar {
+		overflow-x: auto;
+	}
+
+	.modalGrid {
+		grid-template-columns: 1fr;
+	}
+
+	.modalFieldFull {
+		grid-column: auto;
+	}
+}
+
+@media (max-width: 768px) {
+	.container {
+		padding: 1rem;
+	}
+
+	.title {
+		font-size: 1.5rem;
+	}
+
+	.modalHeader {
+		font-size: 1.25rem;
+	}
+
+	.actionButtons {
+		flex-direction: column;
+	}
+}
+
+
+/* Lavender workspace surfaces and keyboard interaction. */
+
+.container { background: var(--color-bg-secondary); color: var(--color-text); padding: clamp(1rem, 2.3vw, 2rem); min-width: 0; }
+
+.section { background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 20px; box-shadow: 0 4px 20px rgba(31, 41, 55, 0.035); min-width: 0; }
+
+.title { color: var(--color-text); font-size: clamp(1.65rem, 2.5vw, 2.2rem); letter-spacing: -0.035em; line-height: 1.2; }
+
+.subtitle { color: var(--color-text-secondary); line-height: 1.65; max-width: 66ch; }
+
+.header { gap: 1rem; flex-wrap: wrap; }
+
+.filterBar { padding: 0.65rem; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 16px; gap: 0.5rem; }
+
+.table { width: 100%; }
+.table th { background: var(--color-bg-secondary); color: var(--color-text-secondary); font-size: 0.75rem; font-weight: 650; letter-spacing: 0.035em; }
+.table td { border-color: var(--color-border); }
+
+.container :is(button, input, select, textarea, a):focus-visible { outline: 3px solid var(--color-lavender); outline-offset: 3px; }
+
+@media (max-width: 640px) { .header { flex-direction: column; align-items: stretch; } }
+
+@media (prefers-reduced-motion: reduce) { .container, .container * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }

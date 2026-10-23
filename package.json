@@ -1,0 +1,16 @@
+{
+  "name": "pharmasense",
+  "scripts": {
+    "build": "npm --prefix frontend install && npm --prefix frontend run build",
+    "dev": "npm --prefix frontend run dev"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "^1.1.0",
+    "@prisma/client": "^5.22.0",
+    "lucide-react": "^1.7.0",
+    "streamifier": "^0.1.1"
+  },
+  "devDependencies": {
+    "prisma": "^5.22.0"
+  }
+}

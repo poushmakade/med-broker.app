@@ -1,0 +1,437 @@
+.container {
+	padding: 2rem;
+	background-color: var(--surface);
+	min-height: 100vh;
+}
+
+.header {
+	margin-bottom: 2rem;
+}
+
+.title {
+	font-size: 2rem;
+	font-weight: 700;
+	color: var(--text-primary);
+	margin: 0 0 0.5rem;
+}
+
+.subtitle {
+	font-size: 0.95rem;
+	color: var(--text-secondary);
+	margin: 0;
+}
+
+.metricsGrid {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 1.5rem;
+	margin-bottom: 2rem;
+}
+
+.metricCard {
+	background-color: var(--surface-elevated);
+	border-radius: var(--radius-lg);
+	padding: 1.5rem;
+	border: 1px solid var(--border-light);
+	box-shadow: var(--shadow-sm);
+	transition: transform var(--motion-fast) var(--ease-standard), box-shadow var(--motion-base) var(--ease-standard);
+}
+
+.metricCard:hover {
+	transform: translateY(-2px);
+	box-shadow: var(--shadow-md);
+}
+
+.metricLabel {
+	font-size: 0.85rem;
+	color: var(--text-secondary);
+	font-weight: 500;
+	text-transform: uppercase;
+	margin-bottom: 0.5rem;
+}
+
+.metricValue {
+	font-size: 1.8rem;
+	font-weight: 700;
+	color: var(--primary);
+	margin: 0.5rem 0;
+}
+
+.metricChange {
+	font-size: 0.8rem;
+	color: var(--success-dark);
+	font-weight: 600;
+}
+
+.withdrawButton {
+	padding: 0.8rem 1.5rem;
+	background-color: var(--primary);
+	color: white;
+	border: none;
+	border-radius: var(--radius);
+	cursor: pointer;
+	font-weight: 600;
+	margin-top: 1rem;
+	transition: transform var(--motion-fast) var(--ease-standard), filter var(--motion-fast) var(--ease-standard), box-shadow var(--motion-base) var(--ease-standard);
+	width: 100%;
+}
+
+.withdrawButton:hover {
+	transform: translateY(-1px);
+	filter: brightness(0.95);
+	box-shadow: var(--shadow-sm);
+}
+
+.section {
+	background-color: var(--surface-elevated);
+	border-radius: var(--radius-lg);
+	padding: 1.5rem;
+	border: 1px solid var(--border-light);
+	box-shadow: var(--shadow-sm);
+	margin-bottom: 2rem;
+}
+
+.sectionHeader {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 1.5rem;
+	padding-bottom: 1rem;
+	border-bottom: 2px solid var(--border);
+}
+
+.sectionTitle {
+	font-size: 1.2rem;
+	font-weight: 700;
+	color: var(--text-primary);
+	margin: 0;
+}
+
+.tabs {
+	display: flex;
+	gap: 1rem;
+	border-bottom: 2px solid var(--border);
+	margin-bottom: 1.5rem;
+}
+
+.tab {
+	padding: 0.8rem 1.2rem;
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	font-weight: 500;
+	color: var(--text-secondary);
+	border-bottom: 3px solid transparent;
+	transition: color var(--motion-base) var(--ease-standard), border-color var(--motion-base) var(--ease-standard), background-color var(--motion-base) var(--ease-standard);
+}
+
+.tab:hover {
+	color: var(--primary);
+}
+
+.tabActive {
+	font-weight: 600;
+	color: var(--primary);
+	border-bottom: 3px solid var(--primary);
+}
+
+.table {
+	width: 100%;
+	border-collapse: separate;
+	border-spacing: 0;
+}
+
+.tableHeadRow {
+	background-color: var(--surface);
+}
+
+.tableHeader {
+	background-color: var(--surface);
+	font-weight: 600;
+	color: var(--text-secondary);
+	padding: 0.9rem 1rem;
+	text-align: left;
+	border-bottom: 1px solid var(--border-light);
+	font-size: 0.75rem;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+}
+
+.tableRow {
+	border-bottom: 1px solid var(--border-light);
+}
+
+.tableRow:hover {
+	background-color: var(--surface);
+}
+
+.tableCell {
+	padding: 1rem;
+	text-align: left;
+	font-size: 0.9rem;
+	color: var(--text-primary);
+	vertical-align: middle;
+}
+
+.statusBadge {
+	display: inline-flex;
+	align-items: center;
+	padding: 0.35rem 0.78rem;
+	border-radius: 9999px;
+	font-size: 0.75rem;
+	font-weight: 700;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	line-height: 1.2;
+}
+
+.amountPositive {
+	color: var(--success-dark);
+	font-weight: 600;
+}
+
+.amountNegative {
+	color: var(--error);
+	font-weight: 600;
+}
+
+.editButton {
+	padding: 0.6rem 1.2rem;
+	border: 1px solid var(--border);
+	background-color: white;
+	border-radius: var(--radius);
+	cursor: pointer;
+	font-weight: 500;
+	transition: transform var(--motion-fast) var(--ease-standard), background-color var(--motion-base) var(--ease-standard), border-color var(--motion-base) var(--ease-standard), box-shadow var(--motion-base) var(--ease-standard);
+}
+
+.editButton:hover {
+	background-color: var(--surface);
+	border-color: var(--border-light);
+	transform: translateY(-1px);
+}
+
+.bankGrid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 1.5rem;
+}
+
+.bankLabel {
+	font-size: 0.85rem;
+	color: var(--text-secondary);
+	font-weight: 500;
+	margin-bottom: 0.3rem;
+}
+
+.bankValue {
+	font-size: 0.95rem;
+	color: var(--text-primary);
+	font-weight: 600;
+}
+
+.modalOverlay {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(124, 58, 237, 0.48);
+	backdrop-filter: blur(6px);
+	-webkit-backdrop-filter: blur(6px);
+	z-index: 1000;
+	align-items: center;
+	justify-content: center;
+	padding: 1rem;
+}
+
+.modalActive {
+	display: flex;
+}
+
+.modal {
+	background-color: var(--surface-elevated);
+	border: 1px solid var(--border-light);
+	border-radius: var(--radius-lg);
+	padding: 2rem;
+	max-width: 500px;
+	width: 90%;
+	max-height: 85vh;
+	overflow: auto;
+	box-shadow: var(--shadow-xl);
+}
+
+.modalTitle {
+	font-size: 1.5rem;
+	font-weight: 700;
+	color: var(--text-primary);
+	margin-bottom: 1.5rem;
+}
+
+.formGroup {
+	margin-bottom: 1.5rem;
+}
+
+.label {
+	display: block;
+	font-size: 0.9rem;
+	font-weight: 600;
+	color: var(--text-primary);
+	margin-bottom: 0.5rem;
+}
+
+.availableBalanceValue {
+	font-size: 1.5rem;
+	font-weight: 700;
+	color: var(--primary);
+}
+
+.input {
+	width: 100%;
+	padding: 0.8rem;
+	border: 1px solid var(--border);
+	border-radius: var(--radius);
+	font-size: 0.95rem;
+	font-family: inherit;
+}
+
+.input:focus {
+	outline: none;
+	border-color: var(--primary);
+}
+
+.withdrawalHint {
+	color: var(--text-secondary);
+	margin-top: 0.5rem;
+	display: block;
+}
+
+.settlementDetailsTitle {
+	color: var(--text-primary);
+}
+
+.settlementDetailsText {
+	font-size: 0.85rem;
+	color: var(--text-secondary);
+	margin-top: 0.5rem;
+	line-height: 1.6;
+}
+
+.buttonGroup {
+	display: flex;
+	gap: 1rem;
+}
+
+.button {
+	flex: 1;
+	padding: 0.8rem;
+	border: none;
+	border-radius: var(--radius);
+	cursor: pointer;
+	font-weight: 600;
+	transition: all 0.2s;
+}
+
+.button:hover:not(:disabled) {
+	transform: translateY(-1px);
+}
+
+.button:disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
+}
+
+.primaryButton {
+	background-color: var(--primary);
+	color: white;
+}
+
+.secondaryButton {
+	background-color: var(--surface);
+	border: 1px solid var(--border);
+	color: var(--text-primary);
+}
+
+@media (max-width: 900px) {
+	.container {
+		padding: 1.5rem;
+	}
+
+	.metricsGrid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.bankGrid {
+		grid-template-columns: 1fr;
+	}
+
+	.tableHeader,
+	.tableCell {
+		padding: 0.75rem;
+	}
+}
+
+@media (max-width: 768px) {
+	.container {
+		padding: 1rem;
+	}
+
+	.metricsGrid {
+		grid-template-columns: 1fr;
+		gap: 1rem;
+	}
+
+	.section {
+		padding: 1rem;
+	}
+
+	.tabs {
+		gap: 0.5rem;
+		overflow-x: auto;
+	}
+
+	.tab {
+		padding: 0.7rem 0.9rem;
+		white-space: nowrap;
+	}
+
+	.sectionHeader {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.75rem;
+	}
+
+	.modal {
+		width: 95%;
+		padding: 1.25rem;
+	}
+
+	.buttonGroup {
+		flex-direction: column;
+	}
+}
+
+
+/* Lavender workspace surfaces and keyboard interaction. */
+
+.container { background: var(--color-bg-secondary); color: var(--color-text); padding: clamp(1rem, 2.3vw, 2rem); min-width: 0; }
+
+.metricCard,
+.section { background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 20px; box-shadow: 0 4px 20px rgba(31, 41, 55, 0.035); min-width: 0; }
+
+.title { color: var(--color-text); font-size: clamp(1.65rem, 2.5vw, 2.2rem); letter-spacing: -0.035em; line-height: 1.2; }
+
+.subtitle { color: var(--color-text-secondary); line-height: 1.65; max-width: 66ch; }
+
+.header { gap: 1rem; flex-wrap: wrap; }
+
+.table { width: 100%; }
+.table th { background: var(--color-bg-secondary); color: var(--color-text-secondary); font-size: 0.75rem; font-weight: 650; letter-spacing: 0.035em; }
+.table td { border-color: var(--color-border); }
+
+.container :is(button, input, select, textarea, a):focus-visible { outline: 3px solid var(--color-lavender); outline-offset: 3px; }
+
+@media (max-width: 640px) { .header { flex-direction: column; align-items: stretch; } }
+
+@media (prefers-reduced-motion: reduce) { .container, .container * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }

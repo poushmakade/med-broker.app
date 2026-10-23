@@ -1,0 +1,179 @@
+.admin-ops-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.admin-ops-toolbar {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.admin-ops-toolbar select,
+.admin-ops-toolbar input {
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  border-radius: 10px;
+  padding: 0.5rem 0.7rem;
+  font-size: 0.82rem;
+  color: var(--color-text);
+}
+
+.admin-ops-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.75rem;
+}
+
+.admin-ops-summary-card {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 0.85rem;
+}
+
+.admin-ops-summary-card h4 {
+  margin: 0 0 0.3rem;
+  color: var(--color-text-secondary-strong);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.admin-ops-summary-card p {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--color-text);
+}
+
+.admin-ops-table-wrap {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  overflow: auto;
+}
+
+.admin-pill {
+  display: inline-flex;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.28rem 0.58rem;
+}
+
+.admin-pill.open {
+  background: var(--color-bg-secondary);
+  color: var(--color-warning, #D97706);
+}
+
+.admin-pill.resolved,
+.admin-pill.refunded,
+.admin-pill.succeeded,
+.admin-pill.done,
+.admin-pill.paid,
+.admin-pill.shipped {
+  background: var(--color-bg-secondary);
+  color: var(--color-text);
+}
+
+.admin-pill.pending,
+.admin-pill.initiated {
+  background: var(--color-bg-secondary);
+  color: var(--color-primary-hover);
+}
+
+.admin-pill.cancelled,
+.admin-pill.failed {
+  background: var(--color-bg-secondary);
+  color: var(--color-error, #DC2626);
+}
+
+.admin-ops-actions {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.admin-ops-actions .btn {
+  padding: 0.38rem 0.62rem;
+  border-radius: 8px;
+  font-size: 0.72rem;
+}
+
+.admin-muted {
+  color: var(--color-text-secondary-strong);
+  font-size: 0.78rem;
+}
+
+.admin-ops-pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  padding: 0.2rem 0;
+}
+
+.admin-ops-pagination-meta {
+  color: var(--color-text-secondary-strong);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.admin-ops-pagination-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.admin-ops-pagination-actions label {
+  color: var(--color-text-secondary-strong);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.admin-ops-pagination-actions select {
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  border-radius: 10px;
+  padding: 0.45rem 0.6rem;
+  font-size: 0.8rem;
+  color: var(--color-text);
+}
+
+@media (max-width: 860px) {
+  .admin-ops-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .admin-ops-pagination {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .admin-ops-pagination-actions {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+}
+/* Shared white-card operations treatment, scoped to admin pages. */
+.admin-ops-page { gap: 1.4rem; color: var(--color-text); min-width: 0; }
+.admin-ops-toolbar { padding: 0.85rem; border: 1px solid var(--color-border); border-radius: 16px; background: var(--color-bg); }
+.admin-ops-toolbar input, .admin-ops-toolbar select { min-height: 42px; border-radius: 10px; border-color: var(--color-border); color: var(--color-text); }
+.admin-ops-summary { gap: 1rem; }
+.admin-ops-summary-card { padding: 1.2rem; background: var(--color-bg); border-color: var(--color-border); border-radius: 18px; box-shadow: 0 3px 16px rgba(31, 41, 55, 0.025); }
+.admin-ops-summary-card h4 { font-size: 0.75rem; color: var(--color-text-secondary-strong); letter-spacing: 0.035em; }
+.admin-ops-summary-card p { color: var(--color-text); font-size: 1.6rem; letter-spacing: -0.035em; font-variant-numeric: tabular-nums; }
+.admin-ops-table-wrap { border-color: var(--color-border); border-radius: 18px; background: var(--color-bg); overflow-x: auto; }
+.admin-ops-table-wrap th { background: var(--color-bg-secondary); color: var(--color-text-secondary-strong); font-size: 0.75rem; letter-spacing: 0.035em; }
+.admin-ops-table-wrap td { border-color: var(--color-border); }
+.admin-pill { border: 1px solid transparent; padding: 0.35rem 0.65rem; font-weight: 650; }
+.admin-pill.pending, .admin-pill.initiated { background: var(--color-bg-secondary); color: var(--color-primary-hover); border-color: var(--color-lavender); }
+.admin-ops-page :is(button, a, input, select, textarea):focus-visible { outline: 3px solid var(--color-lavender); outline-offset: 3px; }
+@media (max-width: 640px) { .admin-ops-toolbar { align-items: stretch; } .admin-ops-toolbar :is(input,select) { max-width: 100%; flex: 1 1 150px; } .admin-ops-summary { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+.admin-ops-page, .admin-ops-table-wrap { min-width: 0; max-width: 100%; }
+.admin-ops-toolbar > * { min-width: 0; max-width: 100%; }

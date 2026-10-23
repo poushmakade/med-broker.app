@@ -1,0 +1,16 @@
+.mi-public-header { position: sticky; top: 0; z-index: 80; background: var(--color-bg, #fff); border-bottom: 1px solid var(--color-border, #e9e5f2); }
+.mi-public-nav { max-width: 1240px; min-height: 88px; padding: 16px 36px; margin: auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.mi-brand { display: inline-flex; align-items: center; gap: 11px; text-decoration: none; color: var(--color-text, #1f2937); font-size: 27px; font-weight: 800; letter-spacing: -1.1px; line-height: 1; }
+.mi-brand > span:last-child > span { color: var(--color-primary, #7c3aed); }
+.mi-brand small { display: block; font-size: 8px; letter-spacing: 2.2px; font-weight: 650; color: var(--color-text-secondary, #64748b); margin-top: 7px; }
+.mi-brand-icon { display: grid; place-items: center; width: 43px; height: 43px; color: #fff; border-radius: 14px; background: var(--color-primary, #7c3aed); box-shadow: 0 6px 16px #7c3aed20; }
+.mi-public-menu { display: flex; align-items: center; gap: 28px; }
+.mi-public-menu a { font-size: 13px; text-decoration: none; color: var(--color-text-secondary, #64748b); font-weight: 600; transition: color .18s; }
+.mi-public-menu a:hover { color: var(--color-primary, #7c3aed); }
+.mi-public-menu .mi-nav-signin { color: var(--color-text, #1f2937); }
+.mi-public-menu .mi-nav-cta { display: inline-flex; align-items: center; gap: 14px; background: var(--color-primary, #7c3aed); border: 1px solid transparent; color: #fff; padding: 13px 20px; border-radius: 11px; }
+.mi-public-menu .mi-nav-cta:hover { background: var(--color-primary-hover, #6d28d9); color: #fff; }
+.mi-nav-divider { height: 20px; width: 1px; background: var(--color-border, #e9e5f2); }
+.mi-nav-toggle { display: none; border: 1px solid var(--color-border, #e9e5f2); background: #fff; padding: 9px; border-radius: 10px; color: var(--color-primary, #7c3aed); }
+.mi-public-nav :focus-visible { outline: 3px solid var(--color-lavender, #ddd6fe); outline-offset: 4px; }
+@media(max-width: 800px) { .mi-public-nav { min-height: 76px; padding: 14px 20px; flex-wrap: wrap; gap: 14px; } .mi-nav-toggle { display: inline-flex; } .mi-public-menu { display: none; width: 100%; padding: 14px 0 4px; flex-direction: column; align-items: stretch; gap: 6px; } .mi-public-menu.is-open { display: flex; } .mi-public-menu a { padding: 12px; border-radius: 9px; } .mi-public-menu a:hover { background: var(--color-bg-secondary, #f5f3ff); } .mi-public-menu .mi-nav-cta { justify-content: center; margin-top: 6px; } .mi-nav-divider { display: none; } }

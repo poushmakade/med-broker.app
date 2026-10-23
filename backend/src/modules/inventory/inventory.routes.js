@@ -1,0 +1,53 @@
+const express = require('express');
+const inventoryController = require('./inventory.controller');
+const { authenticate, requireRole } = require('../../middlewares/auth.middleware');
+const { medicineImageUpload } = require('../../middlewares/upload.middleware');
+
+const router = express.Router();
+
+// All inventory routes require authentication and VENDOR role
+router.use(authenticate, requireRole('VENDOR'));
+
+/**
+ * @route   GET /api/inventory
+ * @desc    Get all inventory items for the vendor
+ * @access  Private (Vendor)
+ */
+router.get('/', inventoryController.getVendorInventory);
+
+/**
+ * @route   POST /api/inventory/medicines
+ * @desc    Add medicine to vendor's inventory
+ * @access  Private (Vendor)
+ */
+router.post('/medicines', inventoryController.addMedicineToInventory);
+
+/**
+ * @route   POST /api/inventory/:id/image
+ * @desc    Upload medicine images for an inventory item (up to 4)
+ * @access  Private (Vendor)
+ */
+router.post('/:id/image', medicineImageUpload.array('images', 4), inventoryController.uploadInventoryMedicineImage);
+
+/**
+ * @route   DELETE /api/inventory/:id/image
+ * @desc    Delete a specific medicine image
+ * @access  Private (Vendor)
+ */
+router.delete('/:id/image', inventoryController.deleteInventoryMedicineImage);
+
+/**
+ * @route   PATCH /api/inventory/:id
+ * @desc    Update inventory item quantity
+ * @access  Private (Vendor)
+ */
+router.patch('/:id', inventoryController.updateInventoryItem);
+
+/**
+ * @route   DELETE /api/inventory/:id
+ * @desc    Remove medicine from vendor's inventory
+ * @access  Private (Vendor)
+ */
+router.delete('/:id', inventoryController.deleteInventoryItem);
+
+module.exports = router;

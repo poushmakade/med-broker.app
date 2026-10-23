@@ -1,0 +1,117 @@
+import axios from 'axios';
+
+const API_URL = import.meta.env.VITE_API_URL || '/api';
+
+if (!import.meta.env.VITE_API_URL) {
+  console.warn("Frontend is falling back to localhost; check Vercel environment variables.");
+}
+
+
+const getAuthHeaders = () => {
+  const token = localStorage.getItem('token');
+  return {
+    Authorization: `Bearer ${token}`
+  };
+};
+
+const inventoryService = {
+  getInventory: async (params = {}) => {
+    const response = await axios.get(`${API_URL}/inventory`, {
+      headers: getAuthHeaders(),
+      params
+    });
+
+    if (!response.data?.success) {
+      throw new Error(response.data?.message || 'Failed to load inventory');
+    }
+
+    return {
+      items: response.data.data || [],
+      pagination: response.data.pagination || { page: 1, limit: 20, total: 0, totalPages: 1 }
+    };
+  },
+
+  addMedicineToInventory: async (payload) => {
+    const response = await axios.post(`${API_URL}/inventory/medicines`, payload, {
+      headers: {
+        ...getAuthHeaders(),
+        'Content-Type': 'application/json'
+      }
+    });
+
+    if (!response.data?.success) {
+      throw new Error(response.data?.message || 'Failed to add medicine');
+    }
+
+    return response.data.data;
+  },
+
+  uploadMedicineImage: async (inventoryId, files) => {
+    const formData = new FormData();
+    const imageFiles = Array.isArray(files) ? files : [files];
+
+    imageFiles.slice(0, 4).forEach((file) => {
+      if (file) {
+        formData.append('images', file);
+      }
+    });
+
+    const response = await axios.post(`${API_URL}/inventory/${inventoryId}/image`, formData, {
+      headers: {
+        ...getAuthHeaders(),
+        'Content-Type': 'multipart/form-data'
+      }
+    });
+
+    if (!response.data?.success) {
+      throw new Error(response.data?.message || 'Failed to upload medicine image');
+    }
+
+    return response.data.data;
+  },
+
+  deleteMedicineImage: async (inventoryId, imageUrl) => {
+    const response = await axios.delete(`${API_URL}/inventory/${inventoryId}/image`, {
+      headers: {
+        ...getAuthHeaders(),
+        'Content-Type': 'application/json'
+      },
+      data: { imageUrl }
+    });
+
+    if (!response.data?.success) {
+      throw new Error(response.data?.message || 'Failed to delete medicine image');
+    }
+
+    return response.data.data;
+  },
+
+  updateInventoryItem: async (inventoryId, payload) => {
+    const response = await axios.patch(`${API_URL}/inventory/${inventoryId}`, payload, {
+      headers: {
+        ...getAuthHeaders(),
+        'Content-Type': 'application/json'
+      }
+    });
+
+    if (!response.data?.success) {
+      throw new Error(response.data?.message || 'Failed to update inventory item');
+    }
+
+    return response.data.data;
+  },
+
+  deleteInventoryItem: async (inventoryId) => {
+    const response = await axios.delete(`${API_URL}/inventory/${inventoryId}`, {
+      headers: getAuthHeaders()
+    });
+
+    if (!response.data?.success) {
+      throw new Error(response.data?.message || 'Failed to delete inventory item');
+    }
+
+    return true;
+  }
+};
+
+export default inventoryService;

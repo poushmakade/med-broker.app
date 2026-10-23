@@ -1,0 +1,174 @@
+/* --- 1. GLOBAL VARIABLES (Force Light Mode) --- */
+.contact-demo {
+  --bg-color: var(--color-bg);           /* Pure White Background */
+  --text-main: var(--color-text);          /* Dark Text */
+  --text-muted: var(--color-text);         /* Stronger muted text */
+  --primary: var(--color-primary-hover);            /* MedAI Green */
+  --primary-hover: var(--color-text);
+  --border-color: var(--color-lavender);       /* Soft green border */
+}
+
+/* --- 2. RESET & BODY --- */
+.contact-demo * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.contact-demo {
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-bg);
+  color: var(--text-main);
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+}
+
+/* --- 3. PAGE LAYOUT --- */
+.contact-demo .page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensures footer sits at bottom */
+  background-color: var(--color-bg);
+}
+
+.contact-demo .container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* --- 4. NAVBAR --- */
+.contact-demo .navbar {
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--border-color);
+  padding: 1rem 0;
+}
+
+.contact-demo .nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contact-demo .logo-text {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--primary);
+}
+
+.contact-demo .nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.contact-demo .nav-link {
+  color: var(--text-main);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* --- 5. HERO & CONTENT --- */
+.contact-demo .hero-section {
+  padding: 3rem 0 2rem;
+}
+
+.contact-demo .hero-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+.contact-demo .content-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 3rem;
+  padding-bottom: 4rem;
+}
+
+/* --- 6. CARDS & FORMS --- */
+.contact-demo .card {
+  background-color: var(--color-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px -1px rgba(31, 41, 55, 0.05);
+}
+
+.contact-demo .info-card {
+  background-color: var(--color-lavender); /* Light Green Background */
+  border: none;
+}
+
+.contact-demo .input-group {
+  margin-bottom: 1.5rem;
+}
+
+.contact-demo .input-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.contact-demo .input-group input,
+.contact-demo .input-group textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.contact-demo .submit-btn {
+  width: 100%;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.contact-demo .info-item {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.contact-demo .icon-box {
+  background: white;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: var(--primary);
+  box-shadow: 0 2px 4px rgba(31, 41, 55, 0.05);
+}
+
+/* --- 7. FOOTER (FIXED) --- */
+.contact-demo .footer {
+  background-color: var(--color-bg);
+  border-top: 1px solid var(--border-color);
+  padding: 2rem 0;
+  margin-top: auto;
+}
+
+.contact-demo .footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contact-demo .copyright {
+  color: var(--text-muted);
+}
+
+.contact-demo .footer-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  margin-left: 2rem;
+}

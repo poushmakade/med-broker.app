@@ -1,0 +1,553 @@
+.tabsRow {
+	display: flex;
+	gap: 1.25rem;
+	margin-top: 1rem;
+	padding: 0.28rem 0.1rem 0.55rem;
+	border-bottom: 1px solid var(--color-lavender);
+	overflow-x: auto;
+	flex-shrink: 0;
+	align-items: flex-end;
+	position: relative;
+	z-index: 2;
+}
+
+.tabButton {
+	background: transparent;
+	border: 0;
+	padding: 0 0 0.32rem;
+	font-size: 0.98rem;
+	font-weight: 700;
+	color: var(--color-text-secondary);
+	cursor: pointer;
+	white-space: nowrap;
+	position: relative;
+	border-radius: 8px;
+	outline: none;
+	box-shadow: none;
+}
+
+.tabButton::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 0;
+	height: 3px;
+	background: var(--color-primary-hover);
+	transition: width 0.2s ease;
+}
+
+.tabButtonActive {
+	color: var(--color-primary-hover);
+}
+
+.tabButtonActive::after {
+	width: 100%;
+}
+
+.tabButton:focus,
+.tabButton:focus-visible {
+	outline: none;
+	box-shadow: none;
+}
+
+.ordersList {
+	margin-top: 1rem;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	overflow-y: auto;
+	min-height: 0;
+	max-height: calc(100vh - 250px);
+	padding: 0.45rem 0.3rem 0.4rem 0;
+	scroll-padding-top: 1rem;
+}
+
+.orderCard {
+	background: var(--color-bg);
+	border: 1px solid var(--color-lavender);
+	border-radius: 14px;
+	padding: 1.1rem 1.1rem 0.95rem;
+	box-shadow: 0 5px 14px rgba(124, 58, 237, 0.06);
+}
+
+.orderCardTop {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 1rem;
+}
+
+.orderIdentity {
+	display: flex;
+	align-items: center;
+	gap: 0.6rem;
+}
+
+.orderIcon {
+	width: 28px;
+	height: 28px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 8px;
+	background: var(--color-lavender);
+	font-size: 0.86rem;
+}
+
+.orderNo {
+	margin: 0;
+	font-size: 1rem;
+	font-weight: 800;
+	color: var(--color-text);
+}
+
+.orderRef {
+	margin: 0.18rem 0 0;
+	font-size: 0.75rem;
+	font-weight: 700;
+	color: var(--color-text-secondary);
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+}
+
+.orderPrice {
+	margin: 0.24rem 0 0;
+	font-size: 1.02rem;
+	font-weight: 700;
+	color: var(--color-text);
+}
+
+.orderActions {
+	display: flex;
+	align-items: center;
+	gap: 0.7rem;
+	flex-wrap: wrap;
+}
+
+.detailsButton {
+	border: 0;
+	border-radius: 999px;
+	padding: 0.58rem 1.55rem;
+	font-size: 0.9rem;
+	font-weight: 700;
+	background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
+	color: var(--color-bg);
+	cursor: pointer;
+}
+
+.cancelButton {
+	border: 0;
+	background: transparent;
+	color: var(--color-error);
+	font-size: 0.9rem;
+	font-weight: 700;
+	cursor: pointer;
+	padding: 0.2rem 0;
+}
+
+.timelineWrap {
+	margin-top: 0.75rem;
+}
+
+.stageLabels {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	font-size: 0.78rem;
+	font-weight: 700;
+	color: var(--color-text-secondary);
+	margin-bottom: 0.3rem;
+}
+
+.stageLine {
+	position: relative;
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	align-items: center;
+	gap: 0;
+	padding: 0.12rem 0;
+}
+
+.stageLine::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 50%;
+	height: 2px;
+	background: var(--color-lavender);
+	transform: translateY(-50%);
+}
+
+.stageProgress {
+	position: absolute;
+	left: 0;
+	top: 50%;
+	height: 2px;
+	background: var(--color-primary-hover);
+	transform: translateY(-50%);
+	transition: width 0.25s ease;
+	max-width: 100%;
+}
+
+.stageDot {
+	position: relative;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background: var(--color-lavender);
+	z-index: 1;
+	justify-self: start;
+}
+
+.stageDot:last-child {
+	justify-self: end;
+}
+
+.stageDot:nth-child(2),
+.stageDot:nth-child(3) {
+	justify-self: center;
+}
+
+.stageDotActive {
+	background: var(--color-primary-hover);
+	box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.17);
+}
+
+.orderMeta {
+	margin: 0.7rem 0 0;
+	display: flex;
+	align-items: center;
+	gap: 0.45rem;
+	flex-wrap: wrap;
+	font-size: 0.86rem;
+	color: var(--color-text-secondary);
+	font-weight: 600;
+}
+
+.emptyState {
+	border: 1px dashed var(--color-lavender);
+	border-radius: 14px;
+	padding: 2rem 1rem;
+	text-align: center;
+	background: var(--color-bg);
+}
+
+.emptyTitle {
+	margin: 0;
+	font-size: 1.05rem;
+	font-weight: 700;
+	color: var(--color-text);
+}
+
+.emptyText {
+	margin: 0.45rem 0 1rem;
+	color: var(--color-text-secondary);
+	font-size: 0.95rem;
+}
+
+@media (max-width: 1100px) {
+	.ordersPage {
+		grid-template-columns: 1fr;
+		min-height: auto;
+		overflow: visible;
+	}
+
+	.sidebar {
+		position: static;
+		height: auto;
+	}
+
+	.sidebarMenu {
+		max-height: none;
+		overflow: visible;
+	}
+
+	.contentPanel {
+		height: auto;
+	}
+
+	.ordersList {
+		overflow: visible;
+		max-height: none;
+	}
+}
+
+@media (max-width: 700px) {
+	.contentPanel {
+		padding: 1rem 0.9rem;
+	}
+
+	.pageTitle {
+		font-size: 1.6rem;
+	}
+
+	.orderCardTop {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.orderActions {
+		width: 100%;
+	}
+
+	.detailsButton {
+		flex: 1;
+		text-align: center;
+	}
+
+	.stageLabels {
+		font-size: 0.66rem;
+	}
+}
+
+/* ── Refund Pipeline Styles ── */
+
+.refundTimerBadge {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35rem;
+	padding: 0.28rem 0.7rem;
+	border-radius: 999px;
+	font-size: 0.78rem;
+	font-weight: 700;
+	letter-spacing: 0.02em;
+	animation: refundPulse 2s ease-in-out infinite;
+}
+
+.refundTimerOpen {
+	background: linear-gradient(135deg, rgba(124, 58, 237, 0.12) 0%, rgba(124, 58, 237, 0.10) 100%);
+	color: var(--color-primary-hover);
+	border: 1px solid rgba(124, 58, 237, 0.25);
+}
+
+.refundTimerExpired {
+	background: rgba(124, 58, 237, 0.08);
+	color: var(--color-error);
+	border: 1px solid rgba(124, 58, 237, 0.18);
+	animation: none;
+}
+
+.refundTimerIcon {
+	display: inline-flex;
+	font-size: 0.82rem;
+}
+
+@keyframes refundPulse {
+	0%, 100% { opacity: 1; }
+	50% { opacity: 0.72; }
+}
+
+.refundSection {
+	margin-top: 0.65rem;
+	padding: 0.7rem 0.85rem;
+	border-radius: 10px;
+	background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.9) 100%);
+	border: 1px solid var(--color-lavender);
+	backdrop-filter: blur(4px);
+}
+
+.refundInfoRow {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.5rem;
+	flex-wrap: wrap;
+}
+
+.refundEligibleText {
+	font-size: 0.82rem;
+	font-weight: 600;
+	color: var(--color-text);
+}
+
+.refundEligibleText strong {
+	color: var(--color-primary-hover);
+}
+
+.refundRequestBtn {
+	border: 0;
+	border-radius: 8px;
+	padding: 0.45rem 1rem;
+	font-size: 0.82rem;
+	font-weight: 700;
+	background: linear-gradient(135deg, var(--color-warning) 0%, var(--color-warning) 100%);
+	color: var(--color-bg);
+	cursor: pointer;
+	transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.refundRequestBtn:hover:not(:disabled) {
+	transform: translateY(-1px);
+	box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+}
+
+.refundRequestBtn:disabled {
+	opacity: 0.55;
+	cursor: not-allowed;
+	transform: none;
+}
+
+.refundExpiredText {
+	font-size: 0.82rem;
+	font-weight: 600;
+	color: var(--color-text-secondary);
+}
+
+/* Refund breakdown modal */
+.refundModalOverlay {
+	position: fixed;
+	inset: 0;
+	background: rgba(124, 58, 237, 0.45);
+	backdrop-filter: blur(6px);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 10000;
+	animation: refundFadeIn 0.2s ease;
+}
+
+@keyframes refundFadeIn {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
+
+.refundModalCard {
+	width: 92%;
+	max-width: 480px;
+	background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-secondary) 100%);
+	border-radius: 16px;
+	padding: 1.5rem;
+	box-shadow: 0 20px 60px rgba(124, 58, 237, 0.18);
+	animation: refundSlideUp 0.25s ease;
+}
+
+@keyframes refundSlideUp {
+	from { transform: translateY(16px); opacity: 0; }
+	to { transform: translateY(0); opacity: 1; }
+}
+
+.refundModalHeader {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 1rem;
+}
+
+.refundModalTitle {
+	margin: 0;
+	font-size: 1.1rem;
+	font-weight: 800;
+	color: var(--color-text);
+}
+
+.refundModalClose {
+	border: 0;
+	background: var(--color-bg-secondary);
+	border-radius: 8px;
+	width: 32px;
+	height: 32px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.1rem;
+	color: var(--color-text-secondary);
+	cursor: pointer;
+}
+
+.refundBreakdownTable {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 0.88rem;
+}
+
+.refundBreakdownTable td {
+	padding: 0.45rem 0;
+	border-bottom: 1px solid var(--color-bg-secondary);
+}
+
+.refundBreakdownTable td:last-child {
+	text-align: right;
+	font-weight: 600;
+	font-variant-numeric: tabular-nums;
+}
+
+.refundBreakdownRefundable {
+	color: var(--color-primary-hover) !important;
+	font-weight: 700 !important;
+}
+
+.refundBreakdownNonRefundable {
+	color: var(--color-error) !important;
+	font-size: 0.82rem;
+}
+
+.refundBreakdownTotal td {
+	border-top: 2px solid var(--color-lavender);
+	border-bottom: 0;
+	padding-top: 0.6rem;
+	font-weight: 800 !important;
+	font-size: 0.95rem;
+}
+
+.refundReasonInput {
+	width: 100%;
+	margin-top: 0.8rem;
+	padding: 0.55rem 0.7rem;
+	border: 1px solid var(--color-lavender);
+	border-radius: 8px;
+	font-size: 0.88rem;
+	resize: vertical;
+	min-height: 60px;
+	font-family: inherit;
+	outline: none;
+	transition: border-color 0.15s ease;
+}
+
+.refundReasonInput:focus {
+	border-color: var(--color-primary);
+	box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+}
+
+.refundModalActions {
+	display: flex;
+	gap: 0.6rem;
+	margin-top: 1rem;
+	justify-content: flex-end;
+}
+
+.refundModalCancelBtn {
+	border: 1px solid var(--color-lavender);
+	background: var(--color-bg);
+	border-radius: 8px;
+	padding: 0.5rem 1.1rem;
+	font-size: 0.88rem;
+	font-weight: 600;
+	color: var(--color-text-secondary);
+	cursor: pointer;
+}
+
+.refundModalConfirmBtn {
+	border: 0;
+	border-radius: 8px;
+	padding: 0.5rem 1.3rem;
+	font-size: 0.88rem;
+	font-weight: 700;
+	background: linear-gradient(135deg, var(--color-error) 0%, var(--color-error) 100%);
+	color: var(--color-bg);
+	cursor: pointer;
+	transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.refundModalConfirmBtn:hover:not(:disabled) {
+	transform: translateY(-1px);
+	box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+}
+
+.refundModalConfirmBtn:disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+
+/* Shared lavender-white surface treatment. */
+.orderCard { background: var(--color-bg); border-color: var(--color-border); border-radius: 18px; box-shadow: 0 4px 20px rgba(70, 36, 117, .035); }

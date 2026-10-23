@@ -1,0 +1,88 @@
+const vendorInsightsService = require('./vendorInsights.service');
+
+module.exports = {
+  getDashboard: async (req, res, next) => {
+    try {
+      const data = await vendorInsightsService.getDashboard(req.user.id);
+
+      if (!data) {
+        return res.status(404).json({
+          success: false,
+          message: 'Vendor profile not found'
+        });
+      }
+
+      return res.json({
+        success: true,
+        data
+      });
+    } catch (error) {
+      return next(error);
+    }
+  },
+
+  getAnalytics: async (req, res, next) => {
+    try {
+      const range = req.query.range || 'month';
+      const data = await vendorInsightsService.getAnalytics(req.user.id, range);
+
+      if (!data) {
+        return res.status(404).json({
+          success: false,
+          message: 'Vendor profile not found'
+        });
+      }
+
+      return res.json({
+        success: true,
+        data
+      });
+    } catch (error) {
+      return next(error);
+    }
+  }
+,
+  getOrders: async (req, res, next) => {
+    try {
+      const { page, limit, status } = req.query;
+      const data = await vendorInsightsService.getVendorOrders(req.user.id, {
+        page,
+        limit,
+        status
+      });
+
+      if (!data) {
+        return res.status(404).json({
+          success: false,
+          message: 'Vendor profile not found'
+        });
+      }
+
+      return res.json({
+        success: true,
+        data
+      });
+    } catch (error) {
+      return next(error);
+    }
+  },
+  getDemandForecast: async (req, res, next) => {
+    try {
+      const data = await vendorInsightsService.getDemandForecast(req.user.id);
+
+      if (!data) {
+        return res.status(404).json({
+          success: false,
+          message: 'Vendor profile not found'
+        });
+      }
+
+      return res.json({
+        success: true,
+        data
+      });
+    } catch (error) {
+      return next(error);
+    }
+  }
+};
